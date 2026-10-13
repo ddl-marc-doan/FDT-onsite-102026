@@ -37,12 +37,8 @@ domino_username = os.environ.get("DOMINO_USER_NAME")
 is_git_based_project = os.environ.get("DOMINO_IS_GIT_BASED")
 
 domino_artifact_dir = '/mnt/artifacts'
-domino_datasource_dir = os.environ.get("DOMINO_DATASETS_DIR","/domino/datasets/")
-domino_data_dir = os.environ.get("DOMINO_DATASETS_DIR","/domino/datasets/")
-if is_git_based_project == "true":
-    domino_dataset_dir = f"{domino_data_dir}/{domino_project_name}/{domino_username}"
-else:
-    domino_dataset_dir = f"{domino_data_dir}/local/{domino_project_name}/{domino_username}"
+domino_data_dir = f"/domino/edv/pvc-domino-nfs-home/{domino_username}/dominodemo"
+domino_dataset_dir = f"{domino_data_dir}/{domino_project_name}/{domino_username}"
 
 ModelArtifact = Artifact(name="Fraud Detection Models", type=MODEL)
 DataArtifact = Artifact(name="Training Data", type=DATA)
